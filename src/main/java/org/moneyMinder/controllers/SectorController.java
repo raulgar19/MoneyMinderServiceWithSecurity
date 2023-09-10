@@ -13,8 +13,14 @@ import java.util.Optional;
 @RestController
 public class SectorController {
     @Autowired
-    private SectorService sectorService = new SectorService();
+    private SectorService sectorService; // No es necesario inicializarlo aquí
 
+    /**
+     * Obtiene un sector por nombre.
+     *
+     * @param nombre El nombre del sector que se desea obtener.
+     * @return ResponseEntity que contiene el DTO del sector encontrado con el estado HTTP correspondiente.
+     */
     @GetMapping("/sectores/nombre/{nombre}")
     public ResponseEntity<SectorDto> getSectorByName(@PathVariable("nombre") String nombre){
         Optional<Sector> sectorOptional = sectorService.getSectorByName(nombre);
